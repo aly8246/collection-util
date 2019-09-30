@@ -1,0 +1,50 @@
+server:
+  port: 10000
+  tomcat:
+    max-http-header-size: 8192
+#加载Mybatis配置文件
+mybatis:
+  mapper-locations: classpath*:/mappers/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mapper:
+  # mappers: com.ddd.collectionutil.example.util.TkMapper
+  identity: MYSQL
+mybatis-plus:
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
+  params: count=countSql
+spring:
+  application:
+    name: accountcenter
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  resources:
+    static-locations: classpath:/static,classpath:/public,classpath:/resources,classpath:/META-INF/resources,servlet context:/,classpath:/templates
+  mvc:
+    static-path-pattern: /** #资源文件
+    date-format: yyyy-MM-dd HH:mm:ss
+  output:
+    ansi:
+      enabled: ALWAYS
+management:
+  endpoint:
+    health:
+      show-details: always
+
+common:
+  redis: true
