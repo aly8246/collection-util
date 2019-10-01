@@ -9,6 +9,8 @@
 
     <modules>
         <module>collection-util</module>
+        <module>collection-util-test</module>
+        <module>collection-example</module>
     </modules>
 
 </project>
