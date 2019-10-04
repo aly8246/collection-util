@@ -7,7 +7,9 @@
     <artifactId>collection-util</artifactId>
     <version>1.0.4.RELEASE</version>
     <name>collection-util</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Collection Util is a mybatis plug-in designed to solve the problem of N + 1 in mysql. When you use
+        Mysql to query linked tables and pages, there will be n + 1 problem. This plug-in can help you!
+    </description>
     <url>https://github.com/aly8246/collection-util</url>
 
     <developers>
@@ -18,8 +20,8 @@
                 <role>Project Manager</role>
                 <role>Architect</role>
             </roles>
-            <organization>重庆市展翔科技</organization>
-            <organizationUrl>http://www.cqkprd.com/</organizationUrl>
+            <organization>freelance</organization>
+            <organizationUrl>none</organizationUrl>
             <properties>
                 <dept>No</dept>
             </properties>
