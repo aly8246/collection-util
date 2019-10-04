@@ -122,6 +122,7 @@
             <groupId>com.github.aly8246</groupId>
             <artifactId>collection-util</artifactId>
             <version>1.0.4.RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
