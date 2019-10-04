@@ -121,7 +121,7 @@
         <dependency>
             <groupId>com.github.aly8246</groupId>
             <artifactId>collection-util</artifactId>
-            <version>1.0.3.RELEASE</version>
+            <version>1.0.5.RELEASE</version>
         </dependency>
     </dependencies>
 
