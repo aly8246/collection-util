@@ -180,6 +180,7 @@ public class CollectionInterceptor implements Interceptor {
         for (Map.Entry<String, Object> entry : o.entrySet()) {
             try {
                 page = (Page) entry.getValue();
+                if (page != null) return page;
             } catch (Exception ignored) {
             }
         }
