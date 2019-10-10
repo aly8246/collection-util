@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "collection-util.safe-model",
+      "type": "java.lang.String",
+      "description": "Description for CollectionUtil.safeModel."
+    }
+  ]
+}

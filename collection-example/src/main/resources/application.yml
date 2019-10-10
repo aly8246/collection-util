@@ -48,3 +48,5 @@ management:
 
 common:
   redis: true
+CollectionUtil:
+  safeModel: true
