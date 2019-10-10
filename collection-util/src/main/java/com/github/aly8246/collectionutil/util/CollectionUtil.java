@@ -20,6 +20,13 @@ private static void clear() {
 	pageResultThreadLocal.set(null);
 }
 
+private static PageResult basePageResult() {
+	PageResult pageResult = CollectionInterceptor.pageResultThreadLocal.get();
+	clear();
+	if (pageResult == null) return new PageResult();
+	return pageResult;
+}
+
 /**
  * 从本地线程中获取分页数据
  *
@@ -27,9 +34,7 @@ private static void clear() {
  * @author 南有乔木
  */
 public static PageResult get() {
-	PageResult pageResult = CollectionInterceptor.pageResultThreadLocal.get();
-	clear();
-	return pageResult;
+	return basePageResult();
 }
 
 /**
@@ -50,7 +55,7 @@ public static PageResult get(Object o) {
  * @author 南有乔木
  */
 public static IPage packMPResult() {
-	PageResult pageResult = CollectionInterceptor.pageResultThreadLocal.get() == null ? new PageResult() : CollectionInterceptor.pageResultThreadLocal.get();
+	PageResult pageResult = basePageResult();
 	clear();
 	return new IPage() {
 		@Override

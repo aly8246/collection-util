@@ -5,11 +5,10 @@
 
     <groupId>com.github.aly8246</groupId>
     <artifactId>collection-util</artifactId>
-    <version>1.0.8.RELEASE</version>
+    <version>1.0.9.RELEASE</version>
     <name>collection-util</name>
     <description>Collection Util is a mybatis plug-in designed to solve the problem of N + 1 in mysql. When you use
         Mysql to query linked tables and pages, there will be n + 1 problem. This plug-in can help you!
-        2
     </description>
     <url>https://github.com/aly8246/collection-util</url>
 
