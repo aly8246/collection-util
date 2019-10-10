@@ -31,7 +31,8 @@ private String database;
 
 public CollectionProperties() {
 	this.properties.setProperty("database", "mysql");
-	this.properties.setProperty("safe-model", Boolean.toString(false));
+	this.properties.setProperty("safe-model", Boolean.toString(false
+	));
 }
 
 public Properties getProperties() {

@@ -17,11 +17,12 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -38,6 +39,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class MysqlPageImpl implements PageInterface {
 private static final List<ResultMapping> EMPTY_RESULTMAPPING = new ArrayList<>(0);
+private final Properties properties = new Properties();
 
 /**
  * 根据ms来创建一个返回结果集，指定返回类型为String
@@ -140,9 +142,11 @@ public List<Index> getIndexList(MappedStatement ms, Executor executor, Object pa
 	List<String> idList;
 	String countSql = this.getCountSql(boundSql.getSql());
 	BoundSql countBoundSql = new BoundSql(mappedStatement.getConfiguration(), countSql, boundSql.getParameterMappings(), parameter);
-	System.out.println(mappedStatement);
-	Object countResultList = executor.query(mappedStatement, parameter, RowBounds.DEFAULT, resultHandler, countKey, countBoundSql);
 	
+	this.closeSqlStd();
+	Object countResultList = executor.query(mappedStatement, parameter, RowBounds.DEFAULT, resultHandler, countKey, countBoundSql);
+	//TODO 开启打印sql
+	this.openSqlStd();
 	idList = (List<String>) countResultList;
 	
 	List<Index> indexList = new ArrayList<>();
@@ -151,6 +155,19 @@ public List<Index> getIndexList(MappedStatement ms, Executor executor, Object pa
 		indexList.add(new Index(i + 1, Collections.frequency(idList, collect.get(i))));
 	}
 	return PageInterface.init(indexList);
+}
+
+private void openSqlStd() {
+
+}
+
+private void closeSqlStd() {
+	System.out.println(properties.getProperty("mybatis.configuration.log-impl"));
+	
+	properties.setProperty("mybatis.configuration.log-impl", "");
+	
+	System.out.println(properties.getProperty("mybatis.configuration.log-impl"));
+	
 }
 
 /**
