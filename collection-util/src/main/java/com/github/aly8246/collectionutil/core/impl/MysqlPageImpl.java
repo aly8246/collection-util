@@ -15,6 +15,9 @@ import org.apache.ibatis.mapping.ResultMapping;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.logging.LogLevel;
+import org.springframework.boot.logging.LoggingSystem;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -157,17 +160,12 @@ public List<Index> getIndexList(MappedStatement ms, Executor executor, Object pa
 	return PageInterface.init(indexList);
 }
 
-private void openSqlStd() {
+private void closeSqlStd() {
 
 }
 
-private void closeSqlStd() {
-	System.out.println(properties.getProperty("mybatis.configuration.log-impl"));
-	
-	properties.setProperty("mybatis.configuration.log-impl", "");
-	
-	System.out.println(properties.getProperty("mybatis.configuration.log-impl"));
-	
+private void openSqlStd() {
+
 }
 
 /**

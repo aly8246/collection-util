@@ -52,7 +52,13 @@ public Object intercept(Invocation invocation) throws Throwable {
 	Object[] args = invocation.getArgs();
 	MappedStatement ms = (MappedStatement) args[0];
 	Object sqlParamObj = args[1];
-	Map<String, Object> sqlParamMap = (Map<String, Object>) sqlParamObj;
+	Map<String, Object> sqlParamMap;
+	try {
+		sqlParamMap = (Map<String, Object>) sqlParamObj;
+	} catch (Exception e) {
+		return invocation.proceed();
+	}
+	
 	RowBounds rowBounds = (RowBounds) args[2];
 	ResultHandler resultHandler = (ResultHandler) args[3];
 	Executor executor = (Executor) invocation.getTarget();
